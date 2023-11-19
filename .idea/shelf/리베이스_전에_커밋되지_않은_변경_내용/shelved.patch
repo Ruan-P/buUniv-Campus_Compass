@@ -1,0 +1,42 @@
+Index: .idea/modules.xml
+===================================================================
+diff --git a/.idea/modules.xml b/.idea/modules.xml
+deleted file mode 100644
+--- a/.idea/modules.xml	(revision cdc89b7666f99b3eb9c359fa23dba847788550b5)
++++ /dev/null	(revision cdc89b7666f99b3eb9c359fa23dba847788550b5)
+@@ -1,8 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="ProjectModuleManager">
+-    <modules>
+-      <module fileurl="file://$PROJECT_DIR$/.idea/buUniv-nearme.iml" filepath="$PROJECT_DIR$/.idea/buUniv-nearme.iml" />
+-    </modules>
+-  </component>
+-</project>
+\ No newline at end of file
+Index: .idea/vcs.xml
+===================================================================
+diff --git a/.idea/vcs.xml b/.idea/vcs.xml
+deleted file mode 100644
+--- a/.idea/vcs.xml	(revision cdc89b7666f99b3eb9c359fa23dba847788550b5)
++++ /dev/null	(revision cdc89b7666f99b3eb9c359fa23dba847788550b5)
+@@ -1,6 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="VcsDirectoryMappings">
+-    <mapping directory="" vcs="Git" />
+-  </component>
+-</project>
+\ No newline at end of file
+Index: .idea/.gitignore
+===================================================================
+diff --git a/.idea/.gitignore b/.idea/.gitignore
+deleted file mode 100644
+--- a/.idea/.gitignore	(revision cdc89b7666f99b3eb9c359fa23dba847788550b5)
++++ /dev/null	(revision cdc89b7666f99b3eb9c359fa23dba847788550b5)
+@@ -1,5 +0,0 @@
+-# 디폴트 무시된 파일
+-/shelf/
+-/workspace.xml
+-# 에디터 기반 HTTP 클라이언트 요청
+-/httpRequests/
