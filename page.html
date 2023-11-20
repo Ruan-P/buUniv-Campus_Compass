@@ -14,6 +14,7 @@
       integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="assets/style.css" />
   </head>
   <body>
     <script
@@ -23,7 +24,7 @@
     ></script>
     <nav class="navbar navbar-expand-lg bg-dark-subtle">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Compass Campus</a>
+        <a class="navbar-brand" href="#">Campus Compass</a>
         <button
           class="navbar-toggler"
           type="button"
@@ -38,7 +39,9 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">메인화면</a>
+              <a class="nav-link active" aria-current="page" href="#"
+                >메인화면</a
+              >
             </li>
             <li class="nav-item dropdown">
               <a
@@ -47,18 +50,37 @@
                 data-bs-toggle="dropdown"
                 href="#"
                 aria-expanded="false"
-                >항목들</a>  <!-- 이름 바꿔야될듯 -->
+                >항목들</a
+              >
+              <!-- 이름 바꿔야될듯 -->
               <ul class="dropdown-menu">
-               <li><a class="dropdown-item" href="#">카페</a></li>
-               <li><a class="dropdown-item" href="#">병원</a></li>
-               <li><a class="dropdown-item" href="#">세탁방</a></li>
+                <li><a class="dropdown-item" href="#">카페</a></li>
+                <li><a class="dropdown-item" href="#">병원</a></li>
+                <li><a class="dropdown-item" href="#">세탁방</a></li>
               </ul>
             </li>
           </ul>
           <form class="d-flex" role="form">
             <div class="input-group d-flex">
-              <input type="text" class="form-control" placeholder="Kakao Maps Api" id="maps_api">
-              <button class="btn btn-outline-success" type="button" id="api save">저장</button>
+              <!-- API KEY 값 저장 스크립트 -->
+              <script
+                type="text/javascript"
+                src="assets/localStorage.js"
+              ></script>
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Kakao Maps Api"
+                id="maps_api"
+              />
+              <button
+                class="btn btn-outline-success"
+                type="button"
+                id="api_save"
+                onclick="saveAPI()"
+              >
+                저장
+              </button>
             </div>
           </form>
         </div>

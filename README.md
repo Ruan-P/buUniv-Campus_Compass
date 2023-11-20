@@ -1,3 +1,3 @@
 # Campus Compass Project
 
-Baekseok Univ. Web App Tue 15:00 ~ 18:00 Class Team No7 project
+#### 백석대학교 웹앱프로그래밍(화 4,5,6) 7조 팀프로젝트

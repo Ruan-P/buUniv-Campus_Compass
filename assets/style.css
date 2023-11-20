@@ -1,0 +1,13 @@
+nav .navbar-brand {
+    font-family: "Agency FB", sans-serif;
+}
+
+button .btn .btn-outline-success #api_save{
+    transition-property: background-color;
+    transition-duration: 2s;
+    transition-timing-function: linear;
+}
+
+.btn-outline-success #api_save:hover{
+    background-color: lawngreen;
+}
