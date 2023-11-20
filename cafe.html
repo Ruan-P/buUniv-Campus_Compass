@@ -19,43 +19,50 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {
-        var map; 
+      var map;
 
-
-        function handleItemClick(event) {
-            var keyword = event.target.innerText;
-            searchPlaces(keyword);
+      function initKakaoMap() {
+        if (!window.kakao || !kakao.maps) {
+          console.error('Kakao Maps API is not loaded');
+          return;
         }
-
 
         document.querySelectorAll('.nav-link').forEach(item => {
-            item.addEventListener('click', handleItemClick);
+          item.addEventListener('click', handleItemClick);
         });
+      }
 
-        function searchPlaces(keyword) {
-            var places = new kakao.maps.services.Places();
+      function handleItemClick(event) {
+        event.preventDefault();
+        var keyword = event.target.innerText;
+        searchPlaces(keyword);
+      }
 
-            places.keywordSearch(keyword, function(data, status, pagination) {
-                if (status === kakao.maps.services.Status.OK) {
-                    displayMarkers(data);
-                } else {
-                    console.error('Search failed or no results found:', status);
-                }
-            });
+      function searchPlaces(keyword) {
+        var places = new kakao.maps.services.Places();
+
+        places.keywordSearch(keyword, function(data, status, pagination) {
+          if (status === kakao.maps.services.Status.OK) {
+            displayMarkers(data);
+          } else {
+            console.error('Search failed or no results found:', status);
+          }
+        });
+      }
+
+      function displayMarkers(places) {
+        for (var i = 0; i < Math.min(5, places.length); i++) {
+          var place = places[i];
+          var marker = new kakao.maps.Marker({
+            map: map,
+            position: new kakao.maps.LatLng(place.y, place.x)
+          });
         }
+      }
 
-
-        function displayMarkers(places) {
-            for (var i = 0; i < Math.min(5, places.length); i++) {
-                var place = places[i];
-                var marker = new kakao.maps.Marker({
-                    map: map,
-                    position: new kakao.maps.LatLng(place.y, place.x)
-                });
-
-            }
-        }
+      initKakaoMap();
     });
+
 
   </script>
   
