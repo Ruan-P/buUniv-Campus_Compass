@@ -1,14 +1,18 @@
+// 전역 변수로 map 선언
+var map;
+
 navigator.geolocation.getCurrentPosition(successGps, failGps);
 
 function successGps(position) {
-  const lat = position.coords.latitude; // 경도
-  const lng = position.coords.longitude; // 위도
+  const lat = position.coords.latitude;
+  const lng = position.coords.longitude;
   const container = document.getElementById("map");
-  let options = {
+  const options = {
     center: new kakao.maps.LatLng(lat, lng),
     level: 3,
   };
-  let map = new kakao.maps.Map(container, options);
+  // map에 지도 인스턴스 할당
+  map = new kakao.maps.Map(container, options);
 
   addEventListenersToItems();
 }
@@ -22,18 +26,18 @@ function addEventListenersToItems() {
   items.forEach(item => {
     item.addEventListener('click', function(event) {
       event.preventDefault();
-      searchAndDisplay(item.textContent.trim(), map);
+      searchAndDisplay(item.textContent.trim());
     });
   });
 }
 
-function searchAndDisplay(keyword, map) {
+function searchAndDisplay(keyword) {
   var ps = new kakao.maps.services.Places(); 
   ps.keywordSearch(keyword, function(data, status, pagination) {
     if (status === kakao.maps.services.Status.OK) {
       var bounds = new kakao.maps.LatLngBounds();
-      for (var i = 0; i < data.length && i < 5; i++) { // 상위 5개 결과만 표시
-        displayMarker(data[i], map, bounds);    
+      for (var i = 0; i < data.length && i < 5; i++) {
+        displayMarker(data[i], bounds);    
       }
       map.setBounds(bounds);
     } else {
@@ -42,7 +46,7 @@ function searchAndDisplay(keyword, map) {
   });
 }
 
-function displayMarker(place, map, bounds) {
+function displayMarker(place, bounds) {
   var marker = new kakao.maps.Marker({
     map: map,
     position: new kakao.maps.LatLng(place.y, place.x) 
