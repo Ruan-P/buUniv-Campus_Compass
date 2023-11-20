@@ -1,6 +1,7 @@
 // 전역 변수 선언
 var map;
 var currentLat, currentLng; // 현재 위치의 위도와 경도
+var markers = []; // 마커를 저장할 배열
 
 navigator.geolocation.getCurrentPosition(successGps, failGps);
 
@@ -26,6 +27,8 @@ function addEventListenersToItems() {
   items.forEach(item => {
     item.addEventListener('click', function(event) {
       event.preventDefault();
+      // 이전 마커 제거
+      removeMarkers();
       searchAndDisplay(item.textContent.trim());
     });
   });
@@ -34,7 +37,7 @@ function addEventListenersToItems() {
 function searchAndDisplay(keyword) {
   var ps = new kakao.maps.services.Places(); 
   var placesOption = {
-    location: new kakao.maps.LatLng(currentLat, currentLng) // 현재 위치 기준 검색
+    location: new kakao.maps.LatLng(currentLat, currentLng)
   };
   ps.keywordSearch(keyword, function(data, status, pagination) {
     if (status === kakao.maps.services.Status.OK) {
@@ -55,6 +58,8 @@ function displayMarker(place, bounds) {
     position: new kakao.maps.LatLng(place.y, place.x) 
   });
 
+  markers.push(marker); // 마커를 배열에 추가
+
   var infowindow = new kakao.maps.InfoWindow({zIndex:1});
   kakao.maps.event.addListener(marker, 'click', function() {
     infowindow.setContent('<div style="padding:5px;font-size:12px;">' + place.place_name + '</div>');
@@ -62,4 +67,12 @@ function displayMarker(place, bounds) {
   });
 
   bounds.extend(new kakao.maps.LatLng(place.y, place.x));
+}
+
+// 모든 마커를 지도에서 제거하는 함수
+function removeMarkers() {
+  for (var i = 0; i < markers.length; i++) {
+    markers[i].setMap(null);
+  }
+  markers = []; // 마커 배열 초기화
 }
