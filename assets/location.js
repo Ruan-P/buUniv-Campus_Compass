@@ -1,7 +1,7 @@
-// 전역 변수 선언
 var map;
 var currentLat, currentLng; // 현재 위치의 위도와 경도
 var markers = []; // 마커를 저장할 배열
+var currentInfowindow = null; // 현재 열려있는 인포윈도우
 
 navigator.geolocation.getCurrentPosition(successGps, failGps);
 
@@ -27,8 +27,8 @@ function addEventListenersToItems() {
   items.forEach(item => {
     item.addEventListener('click', function(event) {
       event.preventDefault();
-      // 이전 마커 제거
       removeMarkers();
+      closeInfowindow(); // 인포 윈도우 닫기
       searchAndDisplay(item.textContent.trim());
     });
   });
@@ -58,12 +58,20 @@ function displayMarker(place, bounds) {
     position: new kakao.maps.LatLng(place.y, place.x) 
   });
 
-  markers.push(marker); // 마커를 배열에 추가
+  markers.push(marker);
 
   var infowindow = new kakao.maps.InfoWindow({zIndex:1});
   kakao.maps.event.addListener(marker, 'click', function() {
-    infowindow.setContent('<div style="padding:5px;font-size:12px;">' + place.place_name + '</div>');
-    infowindow.open(map, marker);
+    if (currentInfowindow === infowindow) {
+      infowindow.close();
+      currentInfowindow = null;
+    } else {
+      if (currentInfowindow) {
+        currentInfowindow.close();
+      }
+      infowindow.open(map, marker);
+      currentInfowindow = infowindow;
+    }
   });
 
   bounds.extend(new kakao.maps.LatLng(place.y, place.x));
@@ -74,5 +82,13 @@ function removeMarkers() {
   for (var i = 0; i < markers.length; i++) {
     markers[i].setMap(null);
   }
-  markers = []; // 마커 배열 초기화
+  markers = [];
+}
+
+// 열려있는 인포 윈도우를 닫는 함수
+function closeInfowindow() {
+  if (currentInfowindow) {
+    currentInfowindow.close();
+  }
+  currentInfowindow = null;
 }
