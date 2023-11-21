@@ -3,4 +3,4 @@
 #### 백석대학교 웹앱프로그래밍(화 4,5,6) 7조 팀프로젝트
 
 
-[Test Pages](http://https://ruan-p.github.io/buUniv-Campus_Compass/page.html)
+[Test Pages](https://ruan-p.github.io/buUniv-Campus_Compass/page.html)
