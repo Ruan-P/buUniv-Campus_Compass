@@ -7,3 +7,9 @@ nav .navbar-brand {
     background-color: #dee2e6;
     box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
 }
+
+#map{
+    padding-left : 2px;
+    border-radius: 4px;
+    height: 500px;
+}
