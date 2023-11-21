@@ -1,0 +1,364 @@
+Index: cafe.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!doctype html>\r\n<html lang=\"en\">\r\n  <head>\r\n    <meta charset=\"UTF-8\" />\r\n    <meta\r\n      name=\"viewport\"\r\n      content=\"width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0\"\r\n    />\r\n    <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\" />\r\n    <title>Campus Compass - Cafe</title>\r\n    <link\r\n      href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css\"\r\n      rel=\"stylesheet\"\r\n      integrity=\"sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9\"\r\n      crossorigin=\"anonymous\"\r\n    />\r\n    <link rel=\"stylesheet\" href=\"./assets/style.css\" />\r\n  </head>\r\n  <body>\r\n    <script\r\n      src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js\"\r\n      integrity=\"sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm\"\r\n      crossorigin=\"anonymous\"\r\n    ></script>\r\n    <nav class=\"navbar navbar-expand-lg bg-dark-subtle text-white\">\r\n      <div class=\"container-fluid\">\r\n        <a class=\"navbar-brand\" href=\"#\" style=\"font-size: 24px\"\r\n          >Campus Compass</a\r\n        >\r\n        <button\r\n          class=\"navbar-toggler\"\r\n          type=\"button\"\r\n          data-bs-toggle=\"collapse\"\r\n          data-bs-target=\"#navbarSupportedContent\"\r\n          aria-controls=\"navbarSupportedContent\"\r\n          aria-expanded=\"false\"\r\n          aria-label=\"Toggle navigation\"\r\n        >\r\n          <span class=\"navbar-toggler-icon\"></span>\r\n        </button>\r\n        <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\r\n          <ul class=\"navbar-nav me-auto mb-2 mb-lg-0\">\r\n            <li class=\"nav-item\">\r\n              <a class=\"nav-link\" aria-current=\"page\" href=\"./page.html\"\r\n                >메인화면</a\r\n              >\r\n            </li>\r\n            <li class=\"nav-item\">\r\n              <a class=\"nav-link active\" aria-current=\"page\" href=\"#\"\r\n                >카페</a\r\n              >\r\n            </li>\r\n            <li class=\"nav-item\">\r\n              <a class=\"nav-link\" aria-current=\"page\" href=\"#\">병원</a>\r\n            </li>\r\n            <li class=\"nav-item\">\r\n              <a class=\"nav-link\" aria-current=\"page\" href=\"#\">세탁방</a>\r\n            </li>\r\n          </ul>\r\n        </div>\r\n      </div>\r\n    </nav>\r\n    <hr />\r\n    <div class=\"container-fluid\">\r\n      <div class=\"row\">\r\n        <div class=\"col me-1\">\r\n          <div class=\"vstack gap-2\">\r\n            <div class=\"d-flex p-2 location_list\">\r\n              Test Codes long text test long text test long text test long text\r\n              test long text test\r\n            </div>\r\n            <div class=\"d-flex p-2 location_list\">test chat</div>\r\n          </div>\r\n        </div>\r\n        <div class=\"col me-4\" id=\"map\" style=\"width: 500px; height: 400px\">\r\n          <script\r\n            type=\"text/javascript\"\r\n            src=\"//dapi.kakao.com/v2/maps/sdk.js?appkey=23fac0dc65ce18c39fff2de55401f589&libraries=services\"\r\n          ></script>\r\n          <script type=\"text/javascript\" src=\"./assets/location.js\"></script>\r\n          <!-- iframe 쓰는거 생각해봐야될듯 -->\r\n        </div>\r\n      </div>\r\n    </div>\r\n  </body>\r\n</html>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/cafe.html b/cafe.html
+--- a/cafe.html	
++++ b/cafe.html	
+@@ -1,5 +1,5 @@
+ <!doctype html>
+-<html lang="en">
++<html lang="ko">
+   <head>
+     <meta charset="UTF-8" />
+     <meta
+@@ -8,6 +8,8 @@
+     />
+     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+     <title>Campus Compass - Cafe</title>
++
++    <!--  Bootstrap CDN import -->
+     <link
+       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+       rel="stylesheet"
+@@ -15,18 +17,29 @@
+       crossorigin="anonymous"
+     />
+     <link rel="stylesheet" href="./assets/style.css" />
++
++    <!-- import 카카오 Maps API with Services -->
++    <script
++            type="text/javascript"
++            src="//dapi.kakao.com/v2/maps/sdk.js?appkey=23fac0dc65ce18c39fff2de55401f589&libraries=services"
++    ></script>
+   </head>
+   <body>
+-    <script
+-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+-      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+-      crossorigin="anonymous"
+-    ></script>
++
++  <!-- Bootstrap Javascript CDN Import  -->
++  <script
++          src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
++          integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
++          crossorigin="anonymous"
++  ></script>
++
++  <!--  with Bootstrap Design format // CSS 문법이랑 약간 다름, 부트스트랩 Docs 참조 -->
++
++  <!--  반응형 Nav 바  -->
+     <nav class="navbar navbar-expand-lg bg-dark-subtle text-white">
+-      <div class="container-fluid">
+-        <a class="navbar-brand" href="#" style="font-size: 24px"
+-          >Campus Compass</a
+-        >
++      <div class="container-fluid"> <!-- 반응형 선언 -->
++        <a class="navbar-brand" href="#" style="font-size: 24px">Campus Compass</a>
++        <!--   반응형 토글 버튼 구조 (작은 화면에서만 표시)    -->
+         <button
+           class="navbar-toggler"
+           type="button"
+@@ -36,19 +49,16 @@
+           aria-expanded="false"
+           aria-label="Toggle navigation"
+         >
++          <!--    토글 버튼 아이콘      -->
+           <span class="navbar-toggler-icon"></span>
+         </button>
+         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+             <li class="nav-item">
+-              <a class="nav-link" aria-current="page" href="./page.html"
+-                >메인화면</a
+-              >
++              <a class="nav-link" aria-current="page" href="./page.html">메인화면</a>
+             </li>
+             <li class="nav-item">
+-              <a class="nav-link active" aria-current="page" href="#"
+-                >카페</a
+-              >
++              <a class="nav-link active" aria-current="page" href="./cafe.html">카페</a>
+             </li>
+             <li class="nav-item">
+               <a class="nav-link" aria-current="page" href="#">병원</a>
+@@ -60,11 +70,17 @@
+         </div>
+       </div>
+     </nav>
+-    <hr />
++    <hr/>
+     <div class="container-fluid">
+       <div class="row">
++        <div class="col me-1" id="map">
++          <!--   import location.js / 기능 구현 js   -->
++          <script type="text/javascript" src="./assets/location.js"></script>
++          <!-- iframe 쓰는거 생각해봐야될듯 -->
++        </div>
+         <div class="col me-1">
+-          <div class="vstack gap-2">
++          <div class="vstack gap-2"> <!-- 수직 스택 컨테이너 -->
++            <!-- 기능 구현 js -->
+             <div class="d-flex p-2 location_list">
+               Test Codes long text test long text test long text test long text
+               test long text test
+@@ -72,14 +88,7 @@
+             <div class="d-flex p-2 location_list">test chat</div>
+           </div>
+         </div>
+-        <div class="col me-4" id="map" style="width: 500px; height: 400px">
+-          <script
+-            type="text/javascript"
+-            src="//dapi.kakao.com/v2/maps/sdk.js?appkey=23fac0dc65ce18c39fff2de55401f589&libraries=services"
+-          ></script>
+-          <script type="text/javascript" src="./assets/location.js"></script>
+-          <!-- iframe 쓰는거 생각해봐야될듯 -->
+-        </div>
++
+       </div>
+     </div>
+   </body>
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"02f271cd-1d4e-4034-959c-9a3ccefd66c6\" name=\"변경\" comment=\"\">\r\n      <change afterPath=\"$PROJECT_DIR$/assets/localStorage.js\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/assets/style.css\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/README.md\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/README.md\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/localStorage.js\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/page.html\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/page.html\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/style.css\" beforeDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"SCSS File\" />\r\n        <option value=\"CSS File\" />\r\n        <option value=\"JavaScript File\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"branch-SunJune\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"GitHubPullRequestSearchHistory\">{\r\n  &quot;lastFilter&quot;: {\r\n  }\r\n}</component>\r\n  <component name=\"GithubPullRequestsUISettings\">\r\n    <option name=\"selectedUrlAndAccountId\">\r\n      <UrlAndAccount>\r\n        <option name=\"accountId\" value=\"47fd5ad0-c46d-43b8-9ac5-5897baf258df\" />\r\n        <option name=\"url\" value=\"https://github.com/Ruan-P/buUniv-Campus_Compass.git\" />\r\n      </UrlAndAccount>\r\n    </option>\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectColorInfo\">{\r\n  &quot;associatedIndex&quot;: 2\r\n}</component>\r\n  <component name=\"ProjectId\" id=\"2YLqvlB9fURXVGrAYyREpAOLj0R\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;ASKED_SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;WebServerToolWindowFactoryState&quot;: &quot;true&quot;,\r\n    &quot;code.cleanup.on.save&quot;: &quot;true&quot;,\r\n    &quot;git-widget-placeholder&quot;: &quot;branch-SunJune&quot;,\r\n    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,\r\n    &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;18.17.1&quot;,\r\n    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;18.17.1&quot;,\r\n    &quot;last_opened_file_path&quot;: &quot;C:/Users/juice/Desktop/Web-project/buUniv-Campus_Compass&quot;,\r\n    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,\r\n    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,\r\n    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,\r\n    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,\r\n    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\\\Users\\\\juice\\\\AppData\\\\Roaming\\\\npm\\\\node_modules\\\\prettier&quot;,\r\n    &quot;settings.editor.selected.configurable&quot;: &quot;watcher.settings&quot;,\r\n    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;\r\n  },\r\n  &quot;keyToStringList&quot;: {\r\n    &quot;GitStage.ChangesTree.GroupingKeys&quot;: [\r\n      &quot;directory&quot;,\r\n      &quot;module&quot;,\r\n      &quot;repository&quot;\r\n    ]\r\n  }\r\n}</component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"MoveFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\juice\\Desktop\\Web-project\\buUniv-Campus_Compass\\assets\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"애플리케이션 수준\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"디폴트 작업\">\r\n      <changelist id=\"02f271cd-1d4e-4034-959c-9a3ccefd66c6\" name=\"변경\" comment=\"\" />\r\n      <created>1700315439794</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1700315439794</updated>\r\n      <workItem from=\"1700315440849\" duration=\"1655000\" />\r\n      <workItem from=\"1700328208122\" duration=\"2654000\" />\r\n      <workItem from=\"1700361597904\" duration=\"2725000\" />\r\n      <workItem from=\"1700364864100\" duration=\"12185000\" />\r\n      <workItem from=\"1700388674930\" duration=\"598000\" />\r\n      <workItem from=\"1700399846689\" duration=\"3715000\" />\r\n      <workItem from=\"1700444627015\" duration=\"3720000\" />\r\n      <workItem from=\"1700448426660\" duration=\"3562000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"부트스트랩 CDN 적용\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1700362448971</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1700362448971</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"부트스트랩 활용한 Navbar 적용 및 js코드 생성\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1700381319572</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1700381319572</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"부트스트랩 활용한 Navbar 적용 및 js코드 생성\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1700381622701</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1700381622701</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"localStorage.js 생성 및 API 영구 저장 기능 구현\">\r\n      <option name=\"closed\" value=\"true\" />\r\n      <created>1700446652995</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1700446652995</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"5\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"Vcs.Log.History.Properties\">\r\n    <option name=\"COLUMN_ID_ORDER\">\r\n      <list>\r\n        <option value=\"Default.Root\" />\r\n        <option value=\"Default.Author\" />\r\n        <option value=\"Default.Date\" />\r\n        <option value=\"Default.Subject\" />\r\n        <option value=\"Space.CommitStatus\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"README File 변경\" />\r\n    <MESSAGE value=\"부트스트랩 CDN 적용\" />\r\n    <MESSAGE value=\"부트스트랩 활용한 Navbar 적용 및 js코드 생성\" />\r\n    <MESSAGE value=\"localStorage.js 생성 및 API 영구 저장 기능 구현\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"localStorage.js 생성 및 API 영구 저장 기능 구현\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -30,7 +30,7 @@
+   <component name="Git.Settings">
+     <option name="RECENT_BRANCH_BY_REPOSITORY">
+       <map>
+-        <entry key="$PROJECT_DIR$" value="branch-SunJune" />
++        <entry key="$PROJECT_DIR$" value="main" />
+       </map>
+     </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+@@ -92,6 +92,16 @@
+     <key name="MoveFile.RECENT_KEYS">
+       <recent name="C:\Users\juice\Desktop\Web-project\buUniv-Campus_Compass\assets" />
+     </key>
++  </component>
++  <component name="RunManager">
++    <configuration name="cafe.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://ruankr.ddns.net/cafe.html">
++      <method v="2" />
++    </configuration>
++    <recent_temporary>
++      <list>
++        <item itemvalue="JavaScript 디버그.cafe.html" />
++      </list>
++    </recent_temporary>
+   </component>
+   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="애플리케이션 수준" UseSingleDictionary="true" transferred="true" />
+   <component name="TaskManager">
+@@ -142,7 +152,15 @@
+       <option name="project" value="LOCAL" />
+       <updated>1700446652995</updated>
+     </task>
+-    <option name="localTasksCounter" value="5" />
++    <task id="LOCAL-00005" summary="Readme 파일 수정 / 테스트 페이지로 연결 위함">
++      <option name="closed" value="true" />
++      <created>1700545830024</created>
++      <option name="number" value="00005" />
++      <option name="presentableId" value="LOCAL-00005" />
++      <option name="project" value="LOCAL" />
++      <updated>1700545830024</updated>
++    </task>
++    <option name="localTasksCounter" value="6" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -164,6 +182,7 @@
+     <MESSAGE value="부트스트랩 CDN 적용" />
+     <MESSAGE value="부트스트랩 활용한 Navbar 적용 및 js코드 생성" />
+     <MESSAGE value="localStorage.js 생성 및 API 영구 저장 기능 구현" />
+-    <option name="LAST_COMMIT_MESSAGE" value="localStorage.js 생성 및 API 영구 저장 기능 구현" />
++    <MESSAGE value="Readme 파일 수정 / 테스트 페이지로 연결 위함" />
++    <option name="LAST_COMMIT_MESSAGE" value="Readme 파일 수정 / 테스트 페이지로 연결 위함" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: assets/style.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>nav .navbar-brand {\r\n    font-family: \"Agency FB\", sans-serif;\r\n    font-size: 24px;\r\n}\r\n\r\n.location_list {\r\n    background-color: #dee2e6;\r\n    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/assets/style.css b/assets/style.css
+--- a/assets/style.css	
++++ b/assets/style.css	
+@@ -6,4 +6,14 @@
+ .location_list {
+     background-color: #dee2e6;
+     box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
++}
++
++#map {
++    margin: 1rem;
++    border-radius: 5px;
++    height: 400px;
++}
++
++body {
++    background-color: azure;
+ }
+\ No newline at end of file
+Index: assets/location.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>// 전역 변수 선언\r\nvar map;\r\nvar currentLat, currentLng; // 현재 위치의 위도와 경도\r\nvar markers = []; // 마커를 저장할 배열\r\nvar currentInfowindow = null; // 현재 열린 인포윈도우\r\n\r\nnavigator.geolocation.getCurrentPosition(successGps, failGps);\r\n\r\nfunction successGps(position) {\r\n  currentLat = position.coords.latitude;\r\n  currentLng = position.coords.longitude;\r\n  const container = document.getElementById(\"map\");\r\n  const options = {\r\n    center: new kakao.maps.LatLng(currentLat, currentLng),\r\n    level: 3,\r\n  };\r\n  map = new kakao.maps.Map(container, options);\r\n\r\n  addEventListenersToItems();\r\n}\r\n\r\nfunction failGps() {\r\n  console.log(\"Geolocation Failed\");\r\n}\r\n\r\nfunction addEventListenersToItems() {\r\n  const items = document.querySelectorAll('.nav-link');\r\n  items.forEach(item => {\r\n    item.addEventListener('click', function(event) {\r\n      event.preventDefault();\r\n      removeMarkers();\r\n      closeInfowindow(); // 인포 윈도우 닫기\r\n      searchAndDisplay(item.textContent.trim());\r\n    });\r\n  });\r\n}\r\n\r\nfunction searchAndDisplay(keyword) {\r\n  var ps = new kakao.maps.services.Places(); \r\n  var placesOption = {\r\n    location: new kakao.maps.LatLng(currentLat, currentLng)\r\n  };\r\n  ps.keywordSearch(keyword, function(data, status, pagination) {\r\n    if (status === kakao.maps.services.Status.OK) {\r\n      var bounds = new kakao.maps.LatLngBounds();\r\n      for (var i = 0; i < data.length && i < 5; i++) {\r\n        displayMarker(data[i], bounds);    \r\n      }\r\n      map.setBounds(bounds);\r\n    } else {\r\n      console.log(\"검색 결과가 없습니다\");\r\n    }\r\n  }, placesOption);\r\n}\r\n\r\nfunction displayMarker(place, bounds) {\r\n  var marker = new kakao.maps.Marker({\r\n    map: map,\r\n    position: new kakao.maps.LatLng(place.y, place.x) \r\n  });\r\n\r\n  markers.push(marker);\r\n\r\n  var infowindow = new kakao.maps.InfoWindow({zIndex:1});\r\n  kakao.maps.event.addListener(marker, 'click', function() {\r\n    if (currentInfowindow === infowindow) {\r\n      infowindow.close();\r\n      currentInfowindow = null;\r\n    } else {\r\n      if (currentInfowindow) {\r\n        currentInfowindow.close();\r\n      }\r\n      infowindow.setContent('<div style=\"padding:5px;font-size:12px;\">' + place.place_name + '</div>');\r\n      infowindow.open(map, marker);\r\n      currentInfowindow = infowindow;\r\n    }\r\n  });\r\n\r\n  bounds.extend(new kakao.maps.LatLng(place.y, place.x));\r\n}\r\n\r\nfunction removeMarkers() {\r\n  for (var i = 0; i < markers.length; i++) {\r\n    markers[i].setMap(null);\r\n  }\r\n  markers = [];\r\n}\r\n\r\nfunction closeInfowindow() {\r\n  if (currentInfowindow) {\r\n    currentInfowindow.close();\r\n  }\r\n  currentInfowindow = null;\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/assets/location.js b/assets/location.js
+--- a/assets/location.js	
++++ b/assets/location.js	
+@@ -24,9 +24,9 @@
+ }
+ 
+ function addEventListenersToItems() {
+-  const items = document.querySelectorAll('.nav-link');
+-  items.forEach(item => {
+-    item.addEventListener('click', function(event) {
++  const items = document.querySelectorAll(".nav-item");
++  items.forEach((item) => {
++    item.addEventListener("click", function (event) {
+       event.preventDefault();
+       removeMarkers();
+       closeInfowindow(); // 인포 윈도우 닫기
+@@ -36,33 +36,38 @@
+ }
+ 
+ function searchAndDisplay(keyword) {
+-  var ps = new kakao.maps.services.Places(); 
++  var ps = new kakao.maps.services.Places();
+   var placesOption = {
+-    location: new kakao.maps.LatLng(currentLat, currentLng)
++    location: new kakao.maps.LatLng(currentLat, currentLng),
+   };
+-  ps.keywordSearch(keyword, function(data, status, pagination) {
+-    if (status === kakao.maps.services.Status.OK) {
+-      var bounds = new kakao.maps.LatLngBounds();
+-      for (var i = 0; i < data.length && i < 5; i++) {
+-        displayMarker(data[i], bounds);    
+-      }
+-      map.setBounds(bounds);
+-    } else {
+-      console.log("검색 결과가 없습니다");
+-    }
+-  }, placesOption);
++  ps.keywordSearch(
++    keyword,
++    function (data, status, pagination) {
++      if (status === kakao.maps.services.Status.OK) {
++        var bounds = new kakao.maps.LatLngBounds();
++        for (var i = 0; i < data.length && i < 5; i++) {
++          displayMarker(data[i], bounds);
++        }
++        map.setBounds(bounds);
++      } else {
++        console.log("검색 결과가 없습니다");
++      }
++    },
++    placesOption,
++  );
+ }
+ 
+ function displayMarker(place, bounds) {
+   var marker = new kakao.maps.Marker({
+     map: map,
+-    position: new kakao.maps.LatLng(place.y, place.x) 
++    position: new kakao.maps.LatLng(place.y, place.x),
+   });
+ 
+   markers.push(marker);
+ 
+-  var infowindow = new kakao.maps.InfoWindow({zIndex:1});
+-  kakao.maps.event.addListener(marker, 'click', function() {
++  var infowindow = new kakao.maps.InfoWindow({ zIndex: 1 });
++
++  kakao.maps.event.addListener(marker, "click", function () {
+     if (currentInfowindow === infowindow) {
+       infowindow.close();
+       currentInfowindow = null;
+@@ -70,7 +75,11 @@
+       if (currentInfowindow) {
+         currentInfowindow.close();
+       }
+-      infowindow.setContent('<div style="padding:5px;font-size:12px;">' + place.place_name + '</div>');
++      infowindow.setContent(
++        '<div style="padding:5px;font-size:12px;">' +
++          place.place_name +
++          "</div>",
++      );
+       infowindow.open(map, marker);
+       currentInfowindow = infowindow;
+     }
+Index: page.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!doctype html>\r\n<html lang=\"en\">\r\n  <head>\r\n    <meta charset=\"UTF-8\" />\r\n    <meta\r\n      name=\"viewport\"\r\n      content=\"width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0\"\r\n    />\r\n    <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\" />\r\n    <title>Campus Compass</title>\r\n    <link\r\n      href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css\"\r\n      rel=\"stylesheet\"\r\n      integrity=\"sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9\"\r\n      crossorigin=\"anonymous\"\r\n    />\r\n    <link rel=\"stylesheet\" href=\"./assets/style.css\"/>\r\n  </head>\r\n  <body>\r\n    <script\r\n      src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js\"\r\n      integrity=\"sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm\"\r\n      crossorigin=\"anonymous\"\r\n    ></script>\r\n    <nav class=\"navbar navbar-expand-lg bg-dark-subtle\">\r\n      <div class=\"container-fluid\">\r\n        <a class=\"navbar-brand\" href=\"#\">Campus Compass</a>\r\n        <button\r\n          class=\"navbar-toggler\"\r\n          type=\"button\"\r\n          data-bs-toggle=\"collapse\"\r\n          data-bs-target=\"#navbarSupportedContent\"\r\n          aria-controls=\"navbarSupportedContent\"\r\n          aria-expanded=\"false\"\r\n          aria-label=\"Toggle navigation\"\r\n        >\r\n          <span class=\"navbar-toggler-icon\"></span>\r\n        </button>\r\n        <div class=\"collapse navbar-collapse\" id=\"navbarSupportedContent\">\r\n          <ul class=\"navbar-nav me-auto mb-2 mb-lg-0\">\r\n            <li class=\"nav-item\">\r\n              <a class=\"nav-link active\" aria-current=\"page\" href=\"#\"\r\n                >메인화면</a\r\n              >\r\n            </li>\r\n            <li class=\"nav-item\">\r\n              <a class=\"nav-link\" aria-current=\"page\" href=\"./cafe.html\">카페</a>\r\n            </li>\r\n            <li class=\"nav-item\">\r\n              <a class=\"nav-link\" aria-current=\"page\" href=\"#\">병원</a>\r\n            </li>\r\n            <li class=\"nav-item\">\r\n              <a class=\"nav-link\" aria-current=\"page\" href=\"#\">세탁방</a>\r\n            </li>\r\n          </ul>\r\n          </div>\r\n      </div>\r\n    </nav>\r\n  </body>\r\n</html>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/page.html b/page.html
+--- a/page.html	
++++ b/page.html	
+@@ -1,5 +1,5 @@
+ <!doctype html>
+-<html lang="en">
++<html lang="ko">
+   <head>
+     <meta charset="UTF-8" />
+     <meta
+@@ -8,6 +8,8 @@
+     />
+     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+     <title>Campus Compass</title>
++
++    <!--  Bootstrap Style CDN Import -->
+     <link
+       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+       rel="stylesheet"
+@@ -17,14 +19,19 @@
+     <link rel="stylesheet" href="./assets/style.css"/>
+   </head>
+   <body>
+-    <script
+-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+-      integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+-      crossorigin="anonymous"
+-    ></script>
++  <!-- Bootstrap Javascript CDN Import  -->
++  <script
++          src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
++          integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
++          crossorigin="anonymous"
++  ></script>
++    <!--  with Bootstrap Design format // CSS 문법이랑 약간 다름, 부트스트랩 Docs 참조 -->
++
++    <!--  반응형 Nav 바  -->
+     <nav class="navbar navbar-expand-lg bg-dark-subtle">
+-      <div class="container-fluid">
++      <div class="container-fluid"> <!-- 반응형 선언 -->
+         <a class="navbar-brand" href="#">Campus Compass</a>
++        <!--   반응형 토글 버튼 구조 (작은 화면에서만 표시)    -->
+         <button
+           class="navbar-toggler"
+           type="button"
+@@ -34,6 +41,7 @@
+           aria-expanded="false"
+           aria-label="Toggle navigation"
+         >
++          <!--    토글 버튼 아이콘      -->
+           <span class="navbar-toggler-icon"></span>
+         </button>
+         <div class="collapse navbar-collapse" id="navbarSupportedContent">
