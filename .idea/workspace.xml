@@ -93,6 +93,16 @@
       <recent name="C:\Users\juice\Desktop\Web-project\buUniv-Campus_Compass\assets" />
     </key>
   </component>
+  <component name="RunManager">
+    <configuration name="service.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://ruankr.ddns.net/service.html">
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JavaScript 디버그.service.html" />
+      </list>
+    </recent_temporary>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="애플리케이션 수준" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="디폴트 작업">
@@ -142,7 +152,47 @@
       <option name="project" value="LOCAL" />
       <updated>1700446652995</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="주석처리">
+      <option name="closed" value="true" />
+      <created>1700552166261</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1700552166261</updated>
+    </task>
+    <task id="LOCAL-00006" summary="cafe.html -&gt; service.html 리팩터링">
+      <option name="closed" value="true" />
+      <created>1700552996255</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1700552996255</updated>
+    </task>
+    <task id="LOCAL-00007" summary="cafe.html -&gt; service.html 리팩터링 따른 href 소스 변경">
+      <option name="closed" value="true" />
+      <created>1700553020131</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1700553020131</updated>
+    </task>
+    <task id="LOCAL-00008" summary="addEventListenersToItems 쿼리 selector .keyword 부여 //&#10;&#10;cafe.html(service.html) 에서 메인으로 돌아갈 수 없는 문제 해결">
+      <option name="closed" value="true" />
+      <created>1700553110325</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1700553110325</updated>
+    </task>
+    <task id="LOCAL-00009" summary="page -&gt; service 이동 불가 해결 / Map 배치 수정 및 css 적용">
+      <option name="closed" value="true" />
+      <created>1700553747260</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1700553747260</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -164,6 +214,15 @@
     <MESSAGE value="부트스트랩 CDN 적용" />
     <MESSAGE value="부트스트랩 활용한 Navbar 적용 및 js코드 생성" />
     <MESSAGE value="localStorage.js 생성 및 API 영구 저장 기능 구현" />
-    <option name="LAST_COMMIT_MESSAGE" value="localStorage.js 생성 및 API 영구 저장 기능 구현" />
+    <MESSAGE value="테스트" />
+    <MESSAGE value="주석 작업" />
+    <MESSAGE value="주석처리" />
+    <MESSAGE value="page.html 주석 작업&#10;&#10;page.html 주석 작업" />
+    <MESSAGE value="service.html 로 리팩터링" />
+    <MESSAGE value="cafe.html -&gt; service.html 리팩터링" />
+    <MESSAGE value="cafe.html -&gt; service.html 리팩터링 따른 href 소스 변경" />
+    <MESSAGE value="addEventListenersToItems 쿼리 selector .keyword 부여 //&#10;&#10;cafe.html(service.html) 에서 메인으로 돌아갈 수 없는 문제 해결" />
+    <MESSAGE value="page -&gt; service 이동 불가 해결 / Map 배치 수정 및 css 적용" />
+    <option name="LAST_COMMIT_MESSAGE" value="page -&gt; service 이동 불가 해결 / Map 배치 수정 및 css 적용" />
   </component>
 </project>
