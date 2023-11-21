@@ -41,15 +41,17 @@ function addEventListenersToItems() {
   });
 }
 
+// 키워드 설정
 function mapKeyword(originalKeyword) {
   const keywordMap = {
     '카페': '카페',
     '병원': '병원',
     '세탁방': '세탁'
   };
-  return keywordMap[originalKeyword] || originalKeyword;
+  return keywordMap[originalKeyword] || originalKeyword;// 매핑된 키워드가 없는 경우 원래 키워드 사용
 }
 
+// 현재 위치 재설정
 function resetCurrentLocation() {
   navigator.geolocation.getCurrentPosition(function(position) {
     currentLat = position.coords.latitude;
