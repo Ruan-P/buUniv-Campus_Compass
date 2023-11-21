@@ -3,6 +3,31 @@ var map; // 지도 객체
 var currentLat, currentLng; // 현재 위치의 위도와 경도
 var markers = []; // 마커를 저장할 배열
 var currentInfowindow = null; // 현재 열린 인포윈도우
+var currentLocationMarker; // 현재 위치 마커
+
+
+function createCurrentLocationMarker(lat, lng) {
+  if (currentLocationMarker) {
+    currentLocationMarker.setPosition(new kakao.maps.LatLng(lat, lng));
+  } else {
+    currentLocationMarker = new kakao.maps.Marker({
+      map: map,
+      position: new kakao.maps.LatLng(lat, lng),
+      // 현재 위치 마커에 대한 스타일링 (예: 다른 색상이나 아이콘)
+      image: new kakao.maps.MarkerImage(
+        // 마커 이미지 URL 및 사이즈 설정
+        'http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png',
+        new kakao.maps.Size(64, 69),
+        {
+          offset: new kakao.maps.Point(27, 69),
+        }
+      )
+    });
+  }
+}
+
+
+
 
 // 현재 위치 정보 가져오기
 navigator.geolocation.getCurrentPosition(successGps, failGps);
@@ -19,6 +44,8 @@ function successGps(position) {
     level: 3, // 지도의 확대 레벨 설정
   };
   map = new kakao.maps.Map(container, options); // 지도 객체 생성
+  // 현재 위치 마커 생성
+  createCurrentLocationMarker(currentLat, currentLng);
 
   addEventListenersToItems(); // 네비게이션 메뉴 아이템에 이벤트 리스너 추가
 }
@@ -26,6 +53,7 @@ function successGps(position) {
 // GPS 정보 가져오기 실패 시 호출되는 함수
 function failGps() {
   console.log("Geolocation Failed");
+  // 실패 시 별도의 기본 위치 설정 필요할듯!
 }
 
 // 네비게이션 메뉴 아이템에 이벤트 리스너 추가
@@ -53,16 +81,15 @@ function mapKeyword(originalKeyword) {
 
 // 현재 위치 재설정
 function resetCurrentLocation() {
-  navigator.geolocation.getCurrentPosition(
-    function (position) {
-      currentLat = position.coords.latitude;
-      currentLng = position.coords.longitude;
-      map.setCenter(new kakao.maps.LatLng(currentLat, currentLng));
-    },
-    function () {
-      console.log("현재 위치 재설정 실패");
-    },
-  );
+  navigator.geolocation.getCurrentPosition(function(position) {
+    currentLat = position.coords.latitude;
+    currentLng = position.coords.longitude;
+    map.setCenter(new kakao.maps.LatLng(currentLat, currentLng));
+    // 현재 위치 마커 업데이트
+    createCurrentLocationMarker(currentLat, currentLng);
+  }, function() {
+    console.log("현재 위치 재설정 실패");
+  });
 }
 
 // 키워드로 장소 검색 및 마커 표시
