@@ -1,7 +1,8 @@
+// 전역 변수 선언
 var map;
 var currentLat, currentLng; // 현재 위치의 위도와 경도
 var markers = []; // 마커를 저장할 배열
-var currentInfowindow = null; // 현재 열려있는 인포윈도우
+var currentInfowindow = null; // 현재 열린 인포윈도우
 
 navigator.geolocation.getCurrentPosition(successGps, failGps);
 
@@ -69,6 +70,7 @@ function displayMarker(place, bounds) {
       if (currentInfowindow) {
         currentInfowindow.close();
       }
+      infowindow.setContent('<div style="padding:5px;font-size:12px;">' + place.place_name + '</div>');
       infowindow.open(map, marker);
       currentInfowindow = infowindow;
     }
@@ -77,7 +79,6 @@ function displayMarker(place, bounds) {
   bounds.extend(new kakao.maps.LatLng(place.y, place.x));
 }
 
-// 모든 마커를 지도에서 제거하는 함수
 function removeMarkers() {
   for (var i = 0; i < markers.length; i++) {
     markers[i].setMap(null);
@@ -85,7 +86,6 @@ function removeMarkers() {
   markers = [];
 }
 
-// 열려있는 인포 윈도우를 닫는 함수
 function closeInfowindow() {
   if (currentInfowindow) {
     currentInfowindow.close();
