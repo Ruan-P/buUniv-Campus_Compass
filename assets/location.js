@@ -86,6 +86,7 @@ function addEventListenersToItems() {
 
 function keywordClickHandler(event) {
   event.preventDefault(); // 기본 동작 방지
+  console.log("클릭된 키워드: ", event.target.textContent.trim()); // 클릭 이벤트 로그
   removeMarkers(); // 모든 마커 제거
   closeInfowindow(); // 인포 윈도우 닫기
   searchAndDisplay(event.target.textContent.trim()); // 키워드로 장소 검색 및 마커 표시
@@ -117,6 +118,7 @@ function resetCurrentLocation() {
 
 // 키워드로 장소 검색 및 마커 표시
 function searchAndDisplay(keyword) {
+  console.log("검색 시작: ", keyword); // 함수 호출 로그
   var mappedKeyword = mapKeyword(keyword);
   var ps = new kakao.maps.services.Places();
   var placesOption = {
