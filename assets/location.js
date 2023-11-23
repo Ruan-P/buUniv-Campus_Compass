@@ -86,6 +86,7 @@ function addEventListenersToItems() {
 
 function keywordClickHandler(event) {
   event.preventDefault(); // 기본 동작 방지
+  console.log("클릭된 키워드: ", event.target.textContent.trim()); // 클릭 이벤트 로그
   removeMarkers(); // 모든 마커 제거
   closeInfowindow(); // 인포 윈도우 닫기
   searchAndDisplay(event.target.textContent.trim()); // 키워드로 장소 검색 및 마커 표시
@@ -117,6 +118,7 @@ function resetCurrentLocation() {
 
 // 키워드로 장소 검색 및 마커 표시
 function searchAndDisplay(keyword) {
+  console.log("검색 시작: ", keyword); // 함수 호출 로그
   var mappedKeyword = mapKeyword(keyword);
   var ps = new kakao.maps.services.Places();
   var placesOption = {
@@ -151,13 +153,16 @@ function searchAndDisplay(keyword) {
         var bounds = new kakao.maps.LatLngBounds();
         searchResults.forEach(function (place) {
           var marker = displayMarker(place, bounds);
-          markers.push(marker); // 마커 저장
+          if (marker) {
+            place.marker = marker; // 검색 결과 항목에 마커 객체 저장
+          }
         });
 
         map.setBounds(bounds);
 
         // 리스트 생성
         displayPlacesInfo(searchResults, currentLat, currentLng);
+        
       } else {
         console.log("검색 결과가 없습니다");
       }
@@ -236,6 +241,10 @@ function displayMarker(place, bounds) {
     }
   });
 
+  if (marker) { // 마커 객체가 유효한지 확인
+    markers.push(marker); // 유효한 마커만 배열에 추가
+  }
+
   bounds.extend(new kakao.maps.LatLng(place.y, place.x));
   place.marker = marker; // 검색 결과 항목에 마커 객체 저장
 }
@@ -244,11 +253,16 @@ function displayMarker(place, bounds) {
 
 // 모든 마커 제거
 function removeMarkers() {
+  console.log("현재 마커들:", markers); // 현재 마커들을 콘솔에 출력
+
   for (var i = 0; i < markers.length; i++) {
-    markers[i].setMap(null); // 마커를 지도에서 제거
+    if (markers[i]) { // 마커가 존재하는지 확인
+      markers[i].setMap(null); // 마커를 지도에서 제거
+    }
   }
   markers = []; // 마커 배열 초기화
 }
+
 
 // 현재 열린 인포윈도우 닫기
 function closeInfowindow() {
