@@ -129,11 +129,20 @@ function displayPlacesInfo(places, currentLat, currentLng) {
   var listEl = document.querySelector('.vstack');
   listEl.innerHTML = '';
 
-  places.forEach(function (place, index) {
+  // 거리 계산 및 정렬
+  var placesWithDistance = places.map(function (place) {
     var distance = getDistanceFromLatLonInKm(currentLat, currentLng, place.y, place.x);
+    return { place: place, distance: distance };
+  });
+
+  placesWithDistance.sort(function (a, b) {
+    return a.distance - b.distance; // 거리에 따라 정렬
+  });
+
+  placesWithDistance.forEach(function (item, index) {
     var placeEl = document.createElement('div');
     placeEl.className = 'd-flex p-2 location_list';
-    placeEl.innerHTML = place.place_name + ' - ' + distance.toFixed(1) + 'km';
+    placeEl.innerHTML = item.place.place_name + ' - ' + item.distance.toFixed(1) + 'km';
     listEl.appendChild(placeEl);
 
     placeEl.addEventListener('click', function() {
