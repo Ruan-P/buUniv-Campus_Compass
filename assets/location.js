@@ -142,31 +142,29 @@ function searchAndDisplay(keyword) {
 }
 
 // 검색된 장소들의 정보를 화면에 표시하는 함수
-function displayPlacesInfo(places, currentLat, currentLng) {
+function displayPlacesInfo(places) {
   var listEl = document.querySelector('.vstack');
   listEl.innerHTML = '';
 
-  // 거리 계산 및 정렬
-  var placesWithDistance = places.map(function (place) {
-    var distance = getDistanceFromLatLonInKm(currentLat, currentLng, place.y, place.x);
-    return { place: place, distance: distance };
-  });
-
-  placesWithDistance.sort(function (a, b) {
-    return a.distance - b.distance; // 거리에 따라 정렬
-  });
-
-  placesWithDistance.forEach(function (item, index) {
+  places.forEach(function (place, index) {
     var placeEl = document.createElement('div');
     placeEl.className = 'd-flex p-2 location_list';
-    placeEl.innerHTML = item.place.place_name + ' - ' + item.distance.toFixed(1) + 'km';
+    placeEl.innerHTML = place.place_name + ' - ' + place.distance.toFixed(1) + 'km';
     listEl.appendChild(placeEl);
 
     placeEl.addEventListener('click', function() {
-      openInfowindowAtMarker(index);
+      openInfowindowAtMarker(place.marker); // 마커 객체로 직접 인포윈도우 열기
     });
   });
 }
+
+// 마커의 인포윈도우를 열기
+function openInfowindowAtMarker(marker) {
+  if (marker) {
+    kakao.maps.event.trigger(marker, 'click');
+  }
+}
+
 
 
 
@@ -192,47 +190,31 @@ function deg2rad(deg) {
 
 
 // 마커를 표시하는 함수 (인덱스 추가)
-function displayMarker(place, bounds, index) {
+function displayMarker(place, bounds) {
   var marker = new kakao.maps.Marker({
     map: map,
     position: new kakao.maps.LatLng(place.y, place.x)
   });
 
-  markers.push(marker);
-  markerIndices[index] = markers.length - 1; // 마커의 실제 인덱스 저장
-
-  var infowindow = new kakao.maps.InfoWindow({ zIndex: 1 }); // 인포윈도우 객체 생성
+  var infowindow = new kakao.maps.InfoWindow({ zIndex: 1 });
   kakao.maps.event.addListener(marker, "click", function () {
     if (currentInfowindow === infowindow) {
-      // 이미 열린 인포윈도우를 클릭한 경우
-      infowindow.close(); // 인포윈도우 닫기
+      infowindow.close();
       currentInfowindow = null;
     } else {
       if (currentInfowindow) {
-        // 다른 인포윈도우가 열려있는 경우
-        currentInfowindow.close(); // 현재 열린 인포윈도우 닫기
+        currentInfowindow.close();
       }
-      infowindow.setContent(
-        '<div style="padding:5px;font-size:12px;">' +
-          place.place_name +
-          "</div>",
-      ); // 인포윈도우에 장소 이름 표시
-      infowindow.open(map, marker); // 인포윈도우 열기
-      currentInfowindow = infowindow; // 현재 열린 인포윈도우로 설정
+      infowindow.setContent('<div style="padding:5px;font-size:12px;">' + place.place_name + '</div>');
+      infowindow.open(map, marker);
+      currentInfowindow = infowindow;
     }
   });
 
   bounds.extend(new kakao.maps.LatLng(place.y, place.x));
-  return marker; // 생성된 마커 반환
+  place.marker = marker; // 검색 결과 항목에 마커 객체 저장
 }
 
-// 리스트에서 항목을 클릭했을 때 해당 마커의 인포윈도우를 열기
-function openInfowindowAtMarker(index) {
-  var marker = markers[index]; // 정렬된 순서대로 마커 참조
-  if (marker) {
-    kakao.maps.event.trigger(marker, 'click');
-  }
-}
 
 
 // 모든 마커 제거
