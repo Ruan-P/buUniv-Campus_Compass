@@ -125,13 +125,33 @@ function displayPlacesInfo(places, currentLat, currentLng) {
   var listEl = document.querySelector('.vstack'); // 결과를 표시할 요소
   listEl.innerHTML = ''; // 이전 결과 초기화
 
-  places.forEach(function (place) {
+  // 거리 계산 및 정렬
+  var placesWithDistance = places.map(function (place) {
     var distance = getDistanceFromLatLonInKm(currentLat, currentLng, place.y, place.x);
+    return { place: place, distance: distance };
+  }).sort(function (a, b) {
+    return a.distance - b.distance;
+  }).slice(0, 5); // 상위 5개 장소만 선택
+
+  placesWithDistance.forEach(function (item, index) {
     var placeEl = document.createElement('div');
     placeEl.className = 'd-flex p-2 location_list';
-    placeEl.innerHTML = place.place_name + ' - ' + distance.toFixed(1) + 'km';
+    placeEl.innerHTML = item.place.place_name + ' - ' + item.distance.toFixed(1) + 'km';
     listEl.appendChild(placeEl);
+
+    // 리스트 항목 클릭 이벤트 추가
+    placeEl.addEventListener('click', function() {
+      openInfowindowAtMarker(index); // 해당 마커의 인포윈도우를 열기
+    });
   });
+}
+
+// 리스트에서 항목을 클릭했을 때 해당 마커의 인포윈도우를 열기
+function openInfowindowAtMarker(index) {
+  var marker = markers[index];
+  if (marker) {
+    kakao.maps.event.trigger(marker, 'click'); // 마커의 클릭 이벤트 트리거
+  }
 }
 
 // 두 좌표 간의 거리 계산 (킬로미터 단위)
