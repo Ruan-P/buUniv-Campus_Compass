@@ -2,17 +2,54 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+            name="viewport"
+            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Campus Compass - Services</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!--  Bootstrap CDN import -->
+    <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9"
+            crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="./assets/style.css" />
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=23fac0dc65ce18c39fff2de55401f589&libraries=services"></script>
+
+    <!-- import 카카오 Maps API with Services -->
+    <script
+            type="text/javascript"
+            src="//dapi.kakao.com/v2/maps/sdk.js?appkey=23fac0dc65ce18c39fff2de55401f589&libraries=services"
+    ></script>
 </head>
 <body>
+
+<!-- Bootstrap Javascript CDN Import  -->
+<script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+        crossorigin="anonymous"
+></script>
+
+<!--  with Bootstrap Design format // CSS 문법이랑 약간 다름, 부트스트랩 Docs 참조 -->
+
+<!--  반응형 Nav 바  -->
 <nav class="navbar navbar-expand-lg bg-dark-subtle text-white">
-    <div class="container-fluid">
+    <div class="container-fluid"> <!-- 반응형 선언 -->
         <a class="navbar-brand" href="#" onclick="location.reload()">Campus Compass</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+        <!--   반응형 토글 버튼 구조 (작은 화면에서만 표시)    -->
+        <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+        >
+            <!--    토글 버튼 아이콘      -->
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -36,17 +73,16 @@
 <hr />
 <div class="container-fluid">
     <div class="row">
-        <div class="col me-6" id="map"></div>
+        <div class="col me-6" id="map">
+            <!--   import location.js / 기능 구현 js   -->
+            <script type="text/javascript" src="./assets/location.js"></script>
+            <!-- iframe 쓰는거 생각해봐야될듯 -->
+        </div>
         <div class="col me-6">
-            <div id="search-results-container" class="search-results-container">
-                <div id="search-results" class="vstack gap-2"></div>
-                <div id="resizer" class="resizer"></div>
+            <div class="vstack gap-2"> <!-- 수직 스택 컨테이너 -->
             </div>
         </div>
     </div>
 </div>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
-<script type="text/javascript" src="./assets/location.js"></script>
 </body>
 </html>
