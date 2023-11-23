@@ -16,9 +16,8 @@ nav .navbar-brand {
 
 /* 모바일 화면에서의 스타일 */
 @media screen and (max-width: 768px) {
-    .vstack {
-      width: 100%; /* 전체 너비 사용 */
-      margin-top: 20px; /* 지도와의 간격 조정 */
+    .container-fluid {
+      padding: 0; /* 모바일 화면에서의 컨테이너 패딩 제거 */
     }
   
     #map {
@@ -26,8 +25,14 @@ nav .navbar-brand {
       height: 300px; /* 지도 높이 조정 */
     }
   
+    .vstack {
+      width: 100%; /* 전체 너비 사용 */
+      margin-top: 20px; /* 지도와의 간격 조정 */
+    }
+  
     .location_list {
       font-size: 14px; /* 텍스트 크기 조정 */
     }
   }
   
+  /* 추가적인 반응형 스타일이 필요한 경우 여기에 작성 */
