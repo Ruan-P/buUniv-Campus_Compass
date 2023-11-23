@@ -5,6 +5,8 @@ var markers = []; // 마커를 저장할 배열
 var currentInfowindow = null; // 현재 열린 인포윈도우
 var currentLocationMarker; // 현재 위치 마커
 var searchResults = []; // 검색된 장소의 결과를 저장할 배열
+var markerIndices = []; // 마커의 인덱스를 저장할 배열
+
 
 function createCurrentLocationMarker(lat, lng) {
   if (currentLocationMarker) {
@@ -104,13 +106,12 @@ function searchAndDisplay(keyword) {
     mappedKeyword,
     function (data, status, pagination) {
       if (status === kakao.maps.services.Status.OK) {
-        console.log('검색 결과:', data); // 검색 결과 로그 출력
-
         // 검색 결과 저장 및 마커 생성
         searchResults = data.slice(0, 5); // 상위 5개 결과만 저장
+        markerIndices = []; // 마커 인덱스 배열 초기화
         var bounds = new kakao.maps.LatLngBounds();
-        searchResults.forEach(function (place) {
-          displayMarker(place, bounds);
+        searchResults.forEach(function (place, index) {
+          displayMarker(place, bounds, index); // 마커 생성 시 인덱스 전달
         });
         map.setBounds(bounds);
 
@@ -153,9 +154,10 @@ function displayPlacesInfo(places, currentLat, currentLng) {
 
 // 리스트에서 항목을 클릭했을 때 해당 마커의 인포윈도우를 열기
 function openInfowindowAtMarker(index) {
-  var marker = markers[index];
+  var markerIndex = markerIndices[index]; // 실제 마커 인덱스 사용
+  var marker = markers[markerIndex];
   if (marker) {
-    kakao.maps.event.trigger(marker, 'click'); // 마커의 클릭 이벤트 트리거
+    kakao.maps.event.trigger(marker, 'click');
   }
 }
 
@@ -180,14 +182,15 @@ function deg2rad(deg) {
 
 
 
-// 장소 정보를 받아와 마커를 표시
-function displayMarker(place, bounds) {
+// 마커를 표시하는 함수 (인덱스 추가)
+function displayMarker(place, bounds, index) {
   var marker = new kakao.maps.Marker({
-    map: map, // 마커를 표시할 지도 객체
-    position: new kakao.maps.LatLng(place.y, place.x), // 마커의 위치 설정
+    map: map,
+    position: new kakao.maps.LatLng(place.y, place.x)
   });
 
-  markers.push(marker); // 마커를 배열에 저장
+  markers.push(marker);
+  markerIndices[index] = markers.length - 1; // 마커의 실제 인덱스 저장
 
   var infowindow = new kakao.maps.InfoWindow({ zIndex: 1 }); // 인포윈도우 객체 생성
   kakao.maps.event.addListener(marker, "click", function () {
