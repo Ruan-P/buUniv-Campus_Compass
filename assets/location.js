@@ -4,7 +4,7 @@ var currentLat, currentLng; // 현재 위치의 위도와 경도
 var markers = []; // 마커를 저장할 배열
 var currentInfowindow = null; // 현재 열린 인포윈도우
 var currentLocationMarker; // 현재 위치 마커
-
+var searchResults = []; // 검색된 장소의 결과를 저장할 배열
 
 function createCurrentLocationMarker(lat, lng) {
   if (currentLocationMarker) {
@@ -103,15 +103,13 @@ function searchAndDisplay(keyword) {
     mappedKeyword,
     function (data, status, pagination) {
       if (status === kakao.maps.services.Status.OK) {
-        // 검색 결과가 정상적으로 반환된 경우
-        var bounds = new kakao.maps.LatLngBounds(); // 검색된 장소들을 포함하는 범위 객체 생성
-        for (var i = 0; i < data.length && i < 5; i++) {
-          // 최대 5개의 장소만 표시
-          displayMarker(data[i], bounds); // 장소 정보를 받아와 마커를 표시
-        }
-        map.setBounds(bounds); // 지도의 확대/축소 수준을 장소들이 표시되는 범위에 맞게 조정
-        // 검색된 장소들의 정보를 화면에 표시하는 함수 호출
-        displayPlacesInfo(data, currentLat, currentLng);
+        searchResults = data.slice(0, 5); // 상위 5개 결과만 저장
+        displayPlacesInfo(searchResults, currentLat, currentLng);
+        var bounds = new kakao.maps.LatLngBounds();
+        searchResults.forEach(function (place) {
+          displayMarker(place, bounds);
+        });
+        map.setBounds(bounds);
       } else {
         console.log("검색 결과가 없습니다");
       }
@@ -122,26 +120,18 @@ function searchAndDisplay(keyword) {
 
 // 검색된 장소들의 정보를 화면에 표시하는 함수
 function displayPlacesInfo(places, currentLat, currentLng) {
-  var listEl = document.querySelector('.vstack'); // 결과를 표시할 요소
-  listEl.innerHTML = ''; // 이전 결과 초기화
+  var listEl = document.querySelector('.vstack');
+  listEl.innerHTML = '';
 
-  // 거리 계산 및 정렬
-  var placesWithDistance = places.map(function (place) {
+  places.forEach(function (place, index) {
     var distance = getDistanceFromLatLonInKm(currentLat, currentLng, place.y, place.x);
-    return { place: place, distance: distance };
-  }).sort(function (a, b) {
-    return a.distance - b.distance;
-  }).slice(0, 5); // 상위 5개 장소만 선택
-
-  placesWithDistance.forEach(function (item, index) {
     var placeEl = document.createElement('div');
     placeEl.className = 'd-flex p-2 location_list';
-    placeEl.innerHTML = item.place.place_name + ' - ' + item.distance.toFixed(1) + 'km';
+    placeEl.innerHTML = place.place_name + ' - ' + distance.toFixed(1) + 'km';
     listEl.appendChild(placeEl);
 
-    // 리스트 항목 클릭 이벤트 추가
     placeEl.addEventListener('click', function() {
-      openInfowindowAtMarker(index); // 해당 마커의 인포윈도우를 열기
+      openInfowindowAtMarker(index);
     });
   });
 }
