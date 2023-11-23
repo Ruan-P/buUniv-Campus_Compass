@@ -110,13 +110,50 @@ function searchAndDisplay(keyword) {
           displayMarker(data[i], bounds); // 장소 정보를 받아와 마커를 표시
         }
         map.setBounds(bounds); // 지도의 확대/축소 수준을 장소들이 표시되는 범위에 맞게 조정
+        // 검색된 장소들의 정보를 화면에 표시하는 함수 호출
+        displayPlacesInfo(data, currentLat, currentLng);
       } else {
         console.log("검색 결과가 없습니다");
       }
     },
-    placesOption,
+    placesOption
   );
 }
+
+// 검색된 장소들의 정보를 화면에 표시하는 함수
+function displayPlacesInfo(places, currentLat, currentLng) {
+  var listEl = document.querySelector('.vstack'); // 결과를 표시할 요소
+  listEl.innerHTML = ''; // 이전 결과 초기화
+
+  places.forEach(function (place) {
+    var distance = getDistanceFromLatLonInKm(currentLat, currentLng, place.y, place.x);
+    var placeEl = document.createElement('div');
+    placeEl.className = 'd-flex p-2 location_list';
+    placeEl.innerHTML = place.place_name + ' - ' + distance.toFixed(1) + 'km';
+    listEl.appendChild(placeEl);
+  });
+}
+
+// 두 좌표 간의 거리 계산 (킬로미터 단위)
+function getDistanceFromLatLonInKm(lat1, lng1, lat2, lng2) {
+  var R = 6371; // 지구의 반지름(km)
+  var dLat = deg2rad(lat2-lat1);
+  var dLon = deg2rad(lng2-lng1); 
+  var a = 
+    Math.sin(dLat/2) * Math.sin(dLat/2) +
+    Math.cos(deg2rad(lat1)) * Math.cos(deg2rad(lat2)) * 
+    Math.sin(dLon/2) * Math.sin(dLon/2)
+  ; 
+  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+  var d = R * c; // 거리(km)
+  return d;
+}
+
+function deg2rad(deg) {
+  return deg * (Math.PI/180)
+}
+
+
 
 // 장소 정보를 받아와 마커를 표시
 function displayMarker(place, bounds) {
