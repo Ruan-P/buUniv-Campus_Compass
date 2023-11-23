@@ -106,13 +106,29 @@ function searchAndDisplay(keyword) {
     mappedKeyword,
     function (data, status, pagination) {
       if (status === kakao.maps.services.Status.OK) {
-        // 검색 결과 저장 및 마커 생성
-        searchResults = data.slice(0, 5); // 상위 5개 결과만 저장
-        markerIndices = []; // 마커 인덱스 배열 초기화
-        var bounds = new kakao.maps.LatLngBounds();
-        searchResults.forEach(function (place, index) {
-          displayMarker(place, bounds, index); // 마커 생성 시 인덱스 전달
+        // 거리 계산 및 정렬
+        searchResults = data
+          .map(function (place) {
+            place.distance = getDistanceFromLatLonInKm(currentLat, currentLng, place.y, place.x);
+            return place;
+          })
+          .sort(function (a, b) {
+            return a.distance - b.distance;
+          })
+          .slice(0, 5); // 상위 5개 결과만 저장
+
+        // 마커 초기화
+        markers.forEach(function (marker) {
+          marker.setMap(null); // 기존 마커 제거
         });
+        markers = [];
+
+        var bounds = new kakao.maps.LatLngBounds();
+        searchResults.forEach(function (place) {
+          var marker = displayMarker(place, bounds);
+          markers.push(marker); // 마커 저장
+        });
+
         map.setBounds(bounds);
 
         // 리스트 생성
@@ -152,14 +168,7 @@ function displayPlacesInfo(places, currentLat, currentLng) {
   });
 }
 
-// 리스트에서 항목을 클릭했을 때 해당 마커의 인포윈도우를 열기
-function openInfowindowAtMarker(index) {
-  var markerIndex = markerIndices[index]; // 실제 마커 인덱스 사용
-  var marker = markers[markerIndex];
-  if (marker) {
-    kakao.maps.event.trigger(marker, 'click');
-  }
-}
+
 
 // 두 좌표 간의 거리 계산 (킬로미터 단위)
 function getDistanceFromLatLonInKm(lat1, lng1, lat2, lng2) {
@@ -213,8 +222,18 @@ function displayMarker(place, bounds, index) {
     }
   });
 
-  bounds.extend(new kakao.maps.LatLng(place.y, place.x)); // 검색된 장소들을 포함하는 범위 확장
+  bounds.extend(new kakao.maps.LatLng(place.y, place.x));
+  return marker; // 생성된 마커 반환
 }
+
+// 리스트에서 항목을 클릭했을 때 해당 마커의 인포윈도우를 열기
+function openInfowindowAtMarker(index) {
+  var marker = markers[index]; // 정렬된 순서대로 마커 참조
+  if (marker) {
+    kakao.maps.event.trigger(marker, 'click');
+  }
+}
+
 
 // 모든 마커 제거
 function removeMarkers() {
