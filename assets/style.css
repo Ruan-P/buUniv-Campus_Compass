@@ -14,32 +14,3 @@ nav .navbar-brand {
     height: 500px;
 }
 
-/* 모바일 환경에서의 검색 결과 UI 스타일 */
-@media (max-width: 768px) {
-    .search-results {
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        max-height: 50%;
-        overflow: auto;
-        background: white;
-        z-index: 5;
-        border-top: 1px solid #ddd;
-    }
-}
-
-/* PC 환경에서의 검색 결과 UI 스타일 */
-@media (min-width: 769px) {
-    .search-results {
-        position: fixed;
-        left: 0;
-        top: 60px; /* 메뉴바 아래 */
-        width: 300px;
-        max-height: calc(100% - 60px);
-        overflow: auto;
-        background: white;
-        z-index: 5;
-        border-right: 1px solid #ddd;
-    }
-}
