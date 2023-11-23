@@ -94,26 +94,27 @@ function resetCurrentLocation() {
 
 // 키워드로 장소 검색 및 마커 표시
 function searchAndDisplay(keyword) {
-  var mappedKeyword = mapKeyword(keyword); // 매핑된 키워드 사용
-  var ps = new kakao.maps.services.Places(); // 장소 검색 서비스 객체 생성
+  var mappedKeyword = mapKeyword(keyword);
+  var ps = new kakao.maps.services.Places();
   var placesOption = {
-    location: new kakao.maps.LatLng(currentLat, currentLng), // 검색 위치 설정
+    location: new kakao.maps.LatLng(currentLat, currentLng),
   };
+
   ps.keywordSearch(
     mappedKeyword,
     function (data, status, pagination) {
       if (status === kakao.maps.services.Status.OK) {
-        // 검색 결과 저장
-        searchResults = data.slice(0, 5); // 상위 5개 결과만 저장
+        console.log('검색 결과:', data); // 검색 결과 로그 출력
 
-        // 마커 생성 및 리스트 표시
+        // 검색 결과 저장 및 마커 생성
+        searchResults = data.slice(0, 5); // 상위 5개 결과만 저장
         var bounds = new kakao.maps.LatLngBounds();
         searchResults.forEach(function (place) {
           displayMarker(place, bounds);
         });
         map.setBounds(bounds);
 
-        // 리스트 표시
+        // 리스트 생성
         displayPlacesInfo(searchResults, currentLat, currentLng);
       } else {
         console.log("검색 결과가 없습니다");
