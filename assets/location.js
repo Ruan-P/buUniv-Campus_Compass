@@ -103,13 +103,18 @@ function searchAndDisplay(keyword) {
     mappedKeyword,
     function (data, status, pagination) {
       if (status === kakao.maps.services.Status.OK) {
+        // 검색 결과 저장
         searchResults = data.slice(0, 5); // 상위 5개 결과만 저장
-        displayPlacesInfo(searchResults, currentLat, currentLng);
+
+        // 마커 생성 및 리스트 표시
         var bounds = new kakao.maps.LatLngBounds();
         searchResults.forEach(function (place) {
           displayMarker(place, bounds);
         });
         map.setBounds(bounds);
+
+        // 리스트 표시
+        displayPlacesInfo(searchResults, currentLat, currentLng);
       } else {
         console.log("검색 결과가 없습니다");
       }
