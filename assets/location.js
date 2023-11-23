@@ -260,24 +260,50 @@ function closeInfowindow() {
 }
 
 
-// 검색 결과 패널 크기 조절 및 드래그 기능 구현
-function setupSearchResultsPanel() {
-  const panel = document.querySelector('.search-results-panel');
+
+
+
+
+
+// 드래그로 크기 조정 기능
+function enableDragResize() {
   let startY;
   let startHeight;
 
-  panel.addEventListener('touchstart', function(e) {
-    startY = e.touches[0].clientY;
-    startHeight = parseInt(document.defaultView.getComputedStyle(panel).height, 10);
-  });
+  document.querySelector('.search-results').addEventListener('touchstart', function(e) {
+      startY = e.touches[0].clientY;
+      startHeight = parseInt(document.defaultView.getComputedStyle(this).height, 10);
+  }, false);
 
-  panel.addEventListener('touchmove', function(e) {
-    e.preventDefault();
-    let touch = e.touches[0];
-    let change = startY - touch.clientY;
-    panel.style.height = (startHeight + change) + 'px';
-  });
+  document.querySelector('.search-results').addEventListener('touchmove', function(e) {
+      let touch = e.touches[0];
+      this.style.height = (startHeight + startY - touch.clientY) + 'px';
+  }, false);
 }
 
-// 페이지 로딩 시 함수 실행
-document.addEventListener('DOMContentLoaded', setupSearchResultsPanel);
+// 모바일 환경에서만 작동하는 드래그 기능 구현
+if (window.innerWidth < 768) {
+  enableDragResize();
+}
+
+// 검색 결과 UI 접기/펼치기 기능
+function toggleSearchResults() {
+  var searchResultsEl = document.querySelector('.search-results');
+  if (searchResultsEl.style.height === '0px') {
+      searchResultsEl.style.height = '50%';
+  } else {
+      searchResultsEl.style.height = '0px';
+  }
+}
+
+// 검색 결과 UI에 접기/펼치기 버튼 추가
+function addToggleBtnToSearchResults() {
+  var searchResultsEl = document.querySelector('.search-results');
+  var toggleBtn = document.createElement('button');
+  toggleBtn.textContent = '접기/펼치기';
+  toggleBtn.onclick = toggleSearchResults;
+  searchResultsEl.prepend(toggleBtn);
+}
+
+// 초기화 시 실행
+addToggleBtnToSearchResults();
