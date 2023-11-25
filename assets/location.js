@@ -171,6 +171,8 @@ function searchAndDisplay(keyword) {
   );
 }
 
+let failGps
+
 // 검색된 장소들의 정보를 화면에 표시하는 함수
 function displayPlacesInfo(places) {
   var listEl = document.querySelector('.vstack');
