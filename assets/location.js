@@ -171,7 +171,12 @@ function searchAndDisplay(keyword) {
   );
 }
 
-let failGps
+//함수 선언
+function openDirectionsUrl(place) {
+  // 상세정보 API활용 URL생성
+  var directionsUrl = 'https://map.kakao.com/link/search/' + place.place_name;
+  window.open(directionsUrl, '_blank');
+}
 
 // 검색된 장소들의 정보를 화면에 표시하는 함수
 function displayPlacesInfo(places) {
@@ -181,8 +186,13 @@ function displayPlacesInfo(places) {
   places.forEach(function (place, index) {
     var placeEl = document.createElement('div');
     placeEl.className = 'd-flex p-2 location_list';
-    placeEl.innerHTML = place.place_name + ' - ' + place.distance.toFixed(1) + 'km';
+    placeEl.innerHTML = place.place_name + ' - ' + place.distance.toFixed(1) + 'km' +
+      '<button class="directions-btn">상세정보</button>';
     listEl.appendChild(placeEl);
+
+    placeEl.querySelector('.directions-btn').addEventListener('click', function() {
+      openDirectionsUrl(place); // 상세정보 바로가기 열기
+    });
 
     placeEl.addEventListener('click', function() {
       openInfowindowAtMarker(place.marker); // 마커 객체로 직접 인포윈도우 열기
@@ -196,9 +206,6 @@ function openInfowindowAtMarker(marker) {
     kakao.maps.event.trigger(marker, 'click');
   }
 }
-
-
-
 
 // 두 좌표 간의 거리 계산 (킬로미터 단위)
 function getDistanceFromLatLonInKm(lat1, lng1, lat2, lng2) {
