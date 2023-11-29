@@ -56,9 +56,9 @@ function successGps(position) {
 function failGps() {
   console.log("Geolocation Failed. Using default location.");
 
-  // 지정된 기본 위치
-  const defaultLat = 36.840661737281;
-  const defaultLng = 127.18197560107;
+  // 위치 권한이 허용되지 않았을 때 천안 백석대학교의 좌표로 지도 초기화
+  const defaultLat = 36.839261737281;
+  const defaultLng = 127.18357560107;
 
   // 지도 생성
   const container = document.getElementById("map");
@@ -68,7 +68,7 @@ function failGps() {
   };
   map = new kakao.maps.Map(container, options); // 지도 객체 생성
 
-  // 기본 위치에 마커 생성
+  // 백석대학교 진리관 위치에 마커 생성
   createCurrentLocationMarker(defaultLat, defaultLng);
 
   addEventListenersToItems(); // 네비게이션 메뉴 아이템에 이벤트 리스너 추가
@@ -119,6 +119,35 @@ function resetCurrentLocation() {
 // 키워드로 장소 검색 및 마커 표시
 function searchAndDisplay(keyword) {
   console.log("검색 시작: ", keyword); // 함수 호출 로그
+
+  // 위치 권한이 허용되었는지 확인
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(
+      function (position) {
+        // 위치 권한이 허용된 경우
+        currentLat = position.coords.latitude;
+        currentLng = position.coords.longitude;
+        검색과정시작(keyword, currentLat, currentLng);
+      },
+      function () {
+        // 위치 권한이 허용되지 않은 경우
+        console.log("위치 권한이 허용되지 않았습니다. 기본 위치를 사용합니다.");
+        const defaultLat = 36.839261737281;
+        const defaultLng = 127.18357560107;
+        검색과정시작(keyword, defaultLat, defaultLng);
+      }
+    );
+  } else {
+    console.log("위치 기능이 지원되지 않습니다. 기본 위치를 사용합니다.");
+    // 위치 기능이 지원되지 않는 경우
+    const defaultLat = 36.839261737281;
+    const defaultLng = 127.18357560107;
+    검색과정시작(keyword, defaultLat, defaultLng);
+  }
+}
+
+// 위치 정보를 얻은 후 검색 과정을 진행하기 위한 도우미 함수
+function 검색과정시작(keyword, currentLat, currentLng) {
   var mappedKeyword = mapKeyword(keyword);
   var ps = new kakao.maps.services.Places();
   var placesOption = {
@@ -162,7 +191,7 @@ function searchAndDisplay(keyword) {
 
         // 리스트 생성
         displayPlacesInfo(searchResults, currentLat, currentLng);
-        
+
       } else {
         console.log("검색 결과가 없습니다");
       }
