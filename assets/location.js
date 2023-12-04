@@ -99,6 +99,7 @@ function mapKeyword(originalKeyword) {
     카페: "카페",
     병원: "병원",
     세탁방: "세탁",
+    편의점: "편의점"
   };
   return keywordMap[originalKeyword] || originalKeyword;// 매핑된 키워드가 없는 경우 원래 키워드 사용
 }
