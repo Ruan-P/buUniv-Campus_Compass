@@ -5,13 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="02f271cd-1d4e-4034-959c-9a3ccefd66c6" name="변경" comment="">
-      <change afterPath="$PROJECT_DIR$/assets/localStorage.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/2023-11-21__2_41_______1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/2023-11-21_오후_2_41,_체크아웃_전에_커밋되지_않은_변경_내용1/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/2023-11-21_오후_3_59,_체크아웃_전에_커밋되지_않은_변경_내용1/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/_____.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/리베이스_전에_커밋되지_않은_변경_내용/shelved.patch" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/localStorage.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/page.html" beforeDir="false" afterPath="$PROJECT_DIR$/page.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/location.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/location.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/service.html" beforeDir="false" afterPath="$PROJECT_DIR$/service.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,10 +32,11 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="branch-SunJune" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="SWAP_SIDES_IN_COMPARE_BRANCHES" value="true" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -93,12 +96,25 @@
       <recent name="C:\Users\juice\Desktop\Web-project\buUniv-Campus_Compass\assets" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JavaScript 디버그.service.html">
+    <configuration name="cafe.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://ruankr.ddns.net/cafe.html">
+      <method v="2" />
+    </configuration>
+    <configuration name="cafe.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://ruankr.ddns.net/cafe.html">
+      <method v="2" />
+    </configuration>
+    <configuration name="service.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://ruankr.ddns.net/service.html">
+      <method v="2" />
+    </configuration>
     <configuration name="service.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://ruankr.ddns.net/service.html">
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="JavaScript 디버그.service.html" />
+        <item itemvalue="JavaScript 디버그.cafe.html" />
+        <item itemvalue="JavaScript 디버그.service.html" />
+        <item itemvalue="JavaScript 디버그.cafe.html" />
         <item itemvalue="JavaScript 디버그.service.html" />
       </list>
     </recent_temporary>
@@ -119,6 +135,19 @@
       <workItem from="1700399846689" duration="3715000" />
       <workItem from="1700444627015" duration="3720000" />
       <workItem from="1700448426660" duration="3562000" />
+      <workItem from="1700828082334" duration="383000" />
+      <workItem from="1700828476799" duration="3275000" />
+      <workItem from="1700897350470" duration="3085000" />
+      <workItem from="1700901552229" duration="1689000" />
+      <workItem from="1701061069590" duration="7647000" />
+      <workItem from="1701181968746" duration="20000" />
+      <workItem from="1701655931942" duration="9173000" />
+      <workItem from="1701676037135" duration="3080000" />
+      <workItem from="1701679202208" duration="4000" />
+      <workItem from="1701679300114" duration="137000" />
+      <workItem from="1701699512595" duration="1474000" />
+      <workItem from="1701755613817" duration="3396000" />
+      <workItem from="1701760477316" duration="423000" />
     </task>
     <task id="LOCAL-00001" summary="부트스트랩 CDN 적용">
       <option name="closed" value="true" />
@@ -192,7 +221,39 @@
       <option name="project" value="LOCAL" />
       <updated>1700553747260</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="카페 이외의 keyword 미작동 수정">
+      <option name="closed" value="true" />
+      <created>1700553917065</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1700553917065</updated>
+    </task>
+    <task id="LOCAL-00011" summary="카페 이외의 keyword 미작동 수정">
+      <option name="closed" value="true" />
+      <created>1700553955852</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1700553955852</updated>
+    </task>
+    <task id="LOCAL-00012" summary="재설정 버튼 재추가">
+      <option name="closed" value="true" />
+      <created>1700554335441</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1700554335441</updated>
+    </task>
+    <task id="LOCAL-00013" summary="solved merge conflict">
+      <option name="closed" value="true" />
+      <created>1700572837900</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1700572837900</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -209,6 +270,17 @@
       </list>
     </option>
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="README File 변경" />
     <MESSAGE value="부트스트랩 CDN 적용" />
@@ -223,6 +295,9 @@
     <MESSAGE value="cafe.html -&gt; service.html 리팩터링 따른 href 소스 변경" />
     <MESSAGE value="addEventListenersToItems 쿼리 selector .keyword 부여 //&#10;&#10;cafe.html(service.html) 에서 메인으로 돌아갈 수 없는 문제 해결" />
     <MESSAGE value="page -&gt; service 이동 불가 해결 / Map 배치 수정 및 css 적용" />
-    <option name="LAST_COMMIT_MESSAGE" value="page -&gt; service 이동 불가 해결 / Map 배치 수정 및 css 적용" />
+    <MESSAGE value="카페 이외의 keyword 미작동 수정" />
+    <MESSAGE value="재설정 버튼 재추가" />
+    <MESSAGE value="solved merge conflict" />
+    <option name="LAST_COMMIT_MESSAGE" value="solved merge conflict" />
   </component>
 </project>
