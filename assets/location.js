@@ -203,7 +203,7 @@ function 검색과정시작(keyword, currentLat, currentLng) {
 //함수 선언
 function openDirectionsUrl(place) {
   // 상세정보 API활용 URL생성
-  var directionsUrl = 'https://map.kakao.com/link/search/' + place.place_name;
+  var directionsUrl = 'https://place.map.kakao.com/' + place.id;
   window.open(directionsUrl, '_blank');
 }
 
