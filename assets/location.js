@@ -46,6 +46,12 @@ function successGps(position) {
   createCurrentLocationMarker(currentLat, currentLng);
 
   addEventListenersToItems(); // 네비게이션 메뉴 아이템에 이벤트 리스너 추가
+
+  map.setZoomable(false);
+  map.setLevel(3); //마우스휠로 확대/축소 막기 추가
+
+  var zoomControl = new kakao.maps.ZoomControl();
+  map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT); //확대/축소 바 추가
 }
 
 // GPS 정보 가져오기 실패 시 호출되는 함수
