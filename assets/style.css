@@ -1,15 +1,43 @@
-nav .navbar-brand {
-    font-family: "Agency FB", sans-serif;
-    font-size: 24px;
+body{
+    background: #cccccc;
 }
 
-.location_list {
-    background-color: #dee2e6;
-    box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+.navbar-brand, .nearby {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+}
+
+.nav-link, .place_list, .infoWindow {
+    font-family: 'Gowun Batang', serif;
+}
+
+.navbar-brand{
+    font-weight: 400;
+    font-size: 28px;
+}
+
+.nearby{
+    font-weight: 500;
+    font-size: 34px;
+}
+
+.nav-link{
+    font-size: 16px;
+}
+.place_list{
+    font-size: 22px;
+}
+
+.infoWindow{
+    padding:5px;
+    border-radius: 2px;
+    font-size:14px
+}
+
+.location {
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.3);
 }
 
 #map{
-    padding-left : 2px;
-    border-radius: 4px;
-    height: 500px;
+    height: 600px;
 }

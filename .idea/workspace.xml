@@ -5,11 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="02f271cd-1d4e-4034-959c-9a3ccefd66c6" name="변경" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/2023-11-21__2_41_______1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/2023-11-21_오후_2_41,_체크아웃_전에_커밋되지_않은_변경_내용1/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/2023-11-21_오후_3_59,_체크아웃_전에_커밋되지_않은_변경_내용1/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/_____.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/리베이스_전에_커밋되지_않은_변경_내용/shelved.patch" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/location.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/location.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/style.css" afterDir="false" />
@@ -71,7 +66,7 @@
     &quot;git-widget-placeholder&quot;: &quot;branch-SunJune&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;javascript.nodejs.core.library.configured.version&quot;: &quot;18.17.1&quot;,
-    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;18.17.1&quot;,
+    &quot;javascript.nodejs.core.library.typings.version&quot;: &quot;18.17.19&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/juice/Desktop/Web-project/buUniv-Campus_Compass&quot;,
     &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
@@ -148,6 +143,10 @@
       <workItem from="1701699512595" duration="1474000" />
       <workItem from="1701755613817" duration="3396000" />
       <workItem from="1701760477316" duration="423000" />
+      <workItem from="1701956827610" duration="79000" />
+      <workItem from="1701956953330" duration="9401000" />
+      <workItem from="1701970103210" duration="136000" />
+      <workItem from="1702052051656" duration="2064000" />
     </task>
     <task id="LOCAL-00001" summary="부트스트랩 CDN 적용">
       <option name="closed" value="true" />
@@ -253,7 +252,15 @@
       <option name="project" value="LOCAL" />
       <updated>1700572837900</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="changed class name for css style">
+      <option name="closed" value="true" />
+      <created>1702054085187</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1702054085187</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -298,6 +305,7 @@
     <MESSAGE value="카페 이외의 keyword 미작동 수정" />
     <MESSAGE value="재설정 버튼 재추가" />
     <MESSAGE value="solved merge conflict" />
-    <option name="LAST_COMMIT_MESSAGE" value="solved merge conflict" />
+    <MESSAGE value="changed class name for css style" />
+    <option name="LAST_COMMIT_MESSAGE" value="changed class name for css style" />
   </component>
 </project>
