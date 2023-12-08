@@ -74,6 +74,12 @@ function failGps() {
   createCurrentLocationMarker(defaultLat, defaultLng);
 
   addEventListenersToItems(); // 네비게이션 메뉴 아이템에 이벤트 리스너 추가
+
+  map.setZoomable(false);
+  map.setLevel(3); //마우스휠로 확대/축소 막기 추가
+
+  var zoomControl = new kakao.maps.ZoomControl();
+  map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT); //확대/축소 바 추가
 }
 
 // 네비게이션 메뉴 아이템에 이벤트 리스너 추가
@@ -91,26 +97,27 @@ function keywordClickHandler(event) {
   removeMarkers(); // 모든 마커 제거
   closeInfowindow(); // 인포 윈도우 닫기
   searchAndDisplay(event.target.textContent.trim()); // 키워드로 장소 검색 및 마커 표시
-  navbarActiveSwitch()
+  navbarActiveSwitch();
 }
 
-function navbarActiveSwitch() { // former name was Active()
+function navbarActiveSwitch() {
   const navLinks = [
-    document.getElementById('NavLink-1'), // 카페
-    document.getElementById('NavLink-2'), // 병원
-    document.getElementById('NavLink-3'), // 세탁방
-    document.getElementById('NavLink-4')  // 편의점
+    document.getElementById("NavLink-1"), // 카페
+    document.getElementById("NavLink-2"), // 병원
+    document.getElementById("NavLink-3"), // 세탁방
+    document.getElementById("NavLink-4"), // 편의점
   ];
 
   navLinks.forEach((navItem, index) => {
-    navItem.addEventListener('click', () => {
-      if (!navItem.classList.contains('active')) {
-        navItem.classList.add('active');
+    navItem.addEventListener("click", () => {
+      if (!navItem.classList.contains("active")) {
+        navItem.classList.add("active");
 
         // 비활성화된 다른 NavLink 요소 처리
         navLinks.forEach((otherNavItem, otherIndex) => {
           if (otherIndex !== index) {
             otherNavItem.classList.remove('active');
+
           }
         });
       }
@@ -222,6 +229,9 @@ function searchingStart(keyword, currentLat, currentLng) {
           }
         });
 
+        // 현재 위치 마커도 bounds에 포함
+        bounds.extend(new kakao.maps.LatLng(currentLat, currentLng));
+
         map.setBounds(bounds);
 
         // 리스트 생성
@@ -239,6 +249,7 @@ function openDirectionsUrl(place) {
   // 상세정보 API활용 URL생성
   var directionsUrl = 'https://place.map.kakao.com/' + place.id;
   window.open(directionsUrl, '_blank');
+
 }
 
 // 검색된 장소들의 정보를 화면에 표시하는 함수
@@ -248,20 +259,20 @@ function displayPlacesInfo(places) {
 
   places.forEach(function (place, index) {
     var placeEl = document.createElement("div");
-    placeEl.className = "d-flex p-2 location_list";
+    placeEl.className =
+      "d-flex flex-column p-2 bg-outline-success mb-2 location";
     placeEl.innerHTML =
+      `<h3 class="place_list">` +
       place.place_name +
       " - " +
       place.distance.toFixed(1) +
-      "km" +
-      '<button class="directions-btn">상세정보</button>';
+      "km</h3>" +
+      '<button class="btn btn-outline-secondary btn-sm mt-2">상세정보</button>';
     listEl.appendChild(placeEl);
 
-    placeEl
-      .querySelector(".directions-btn")
-      .addEventListener("click", function () {
-        openDirectionsUrl(place); // 상세정보 바로가기 열기
-      });
+    placeEl.querySelector("button").addEventListener("click", function () {
+      openDirectionsUrl(place);
+    });
 
     placeEl.addEventListener("click", function () {
       openInfowindowAtMarker(place.marker); // 마커 객체로 직접 인포윈도우 열기
@@ -313,9 +324,7 @@ function displayMarker(place, bounds) {
         currentInfowindow.close();
       }
       infowindow.setContent(
-        '<div style="padding:5px;font-size:12px;">' +
-          place.place_name +
-          "</div>",
+        '<div class="infoWindow">' + place.place_name + "</div>",
       );
       infowindow.open(map, marker);
       currentInfowindow = infowindow;
