@@ -91,71 +91,30 @@ function keywordClickHandler(event) {
   removeMarkers(); // 모든 마커 제거
   closeInfowindow(); // 인포 윈도우 닫기
   searchAndDisplay(event.target.textContent.trim()); // 키워드로 장소 검색 및 마커 표시
-  Active();
+  navbarActiveSwitch()
 }
 
-function Active(){
-  const active1 = document.getElementById('NavLink-1'); //카페
-  const active2 = document.getElementById('NavLink-2'); //병원
-  const active3 = document.getElementById('NavLink-3'); //세탁방
-  const active4 = document.getElementById('NavLink-4'); //편의점
- 
-  active1.addEventListener('click', function() {
-    if (!active1.classList.contains("active")) {
+function navbarActiveSwitch() { // former name was Active()
+  const navLinks = [
+    document.getElementById('NavLink-1'), // 카페
+    document.getElementById('NavLink-2'), // 병원
+    document.getElementById('NavLink-3'), // 세탁방
+    document.getElementById('NavLink-4')  // 편의점
+  ];
 
-      active1.classList.remove("nav-link");
-      active1.classList.add("nav-link", "active");
-      active2.classList.remove("nav-link", "active");
-      active2.classList.add("nav-link");
-      active3.classList.remove("nav-link", "active");
-      active3.classList.add("nav-link");
-      active4.classList.remove("nav-link", "active");
-      active4.classList.add("nav-link");
-    }
-  });
+  navLinks.forEach((navItem, index) => {
+    navItem.addEventListener('click', () => {
+      if (!navItem.classList.contains('active')) {
+        navItem.classList.add('active');
 
-
-  active2.addEventListener('click', function() {
-    if (!active2.classList.contains("active")) {
-
-      active2.classList.remove("nav-link");
-      active2.classList.add("nav-link", "active");
-      active1.classList.remove("nav-link", "active");
-      active1.classList.add("nav-link");
-      active3.classList.remove("nav-link", "active");
-      active3.classList.add("nav-link");
-      active4.classList.remove("nav-link", "active");
-      active4.classList.add("nav-link");
-    }
-  });
-
-
-  active3.addEventListener('click', function() {
-    if (!active3.classList.contains("active")) {
-  
-      active3.classList.remove("nav-link");
-      active3.classList.add("nav-link", "active");
-      active1.classList.remove("nav-link", "active");
-      active1.classList.add("nav-link");
-      active2.classList.remove("nav-link", "active");
-      active2.classList.add("nav-link");
-      active4.classList.remove("nav-link", "active");
-      active4.classList.add("nav-link");
-    }
-  });
-
-  active4.addEventListener('click', function() {
-    if (!active4.classList.contains("active")) {
- 
-      active4.classList.remove("nav-link");
-      active4.classList.add("nav-link", "active");
-      active1.classList.remove("nav-link", "active");
-      active1.classList.add("nav-link");
-      active2.classList.remove("nav-link", "active");
-      active2.classList.add("nav-link");
-      active3.classList.remove("nav-link", "active");
-      active3.classList.add("nav-link");
-    }
+        // 비활성화된 다른 NavLink 요소 처리
+        navLinks.forEach((otherNavItem, otherIndex) => {
+          if (otherIndex !== index) {
+            otherNavItem.classList.remove('active');
+          }
+        });
+      }
+    });
   });
 }
 
