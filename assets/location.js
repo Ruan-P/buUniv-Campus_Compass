@@ -116,7 +116,8 @@ function navbarActiveSwitch() {
         // 비활성화된 다른 NavLink 요소 처리
         navLinks.forEach((otherNavItem, otherIndex) => {
           if (otherIndex !== index) {
-            otherNavItem.classList.remove("active");
+            otherNavItem.classList.remove('active');
+
           }
         });
       }
@@ -246,8 +247,9 @@ function searchingStart(keyword, currentLat, currentLng) {
 //함수 선언
 function openDirectionsUrl(place) {
   // 상세정보 API활용 URL생성
-  var directionsUrl = `https://place.map.kakao.com/` + place.id;
-  window.open(directionsUrl, "_blank");
+  var directionsUrl = 'https://place.map.kakao.com/' + place.id;
+  window.open(directionsUrl, '_blank');
+
 }
 
 // 검색된 장소들의 정보를 화면에 표시하는 함수
