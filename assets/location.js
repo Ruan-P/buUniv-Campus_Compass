@@ -17,8 +17,9 @@ function createCurrentLocationMarker(lat, lng) {
       // 현재 위치 마커에 대한 스타일링 (예: 다른 색상이나 아이콘)
       image: new kakao.maps.MarkerImage(
         // 마커 이미지 URL 및 사이즈 설정
-        "http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png",
-        new kakao.maps.Size(64, 69),
+        // "http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/marker_red.png",
+        "https://cdn4.iconfinder.com/data/icons/small-n-flat/24/map-marker-512.png",
+        new kakao.maps.Size(64, 64),
         {
           offset: new kakao.maps.Point(27, 69),
         },
