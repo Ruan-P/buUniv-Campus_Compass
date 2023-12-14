@@ -120,20 +120,6 @@ function mapKeyword(originalKeyword) {
   return keywordMap[originalKeyword] || originalKeyword;
 }
 
-function resetCurrentLocation() {
-  navigator.geolocation.getCurrentPosition(
-    function (position) {
-      currentLat = position.coords.latitude;
-      currentLng = position.coords.longitude;
-      map.setCenter(new kakao.maps.LatLng(currentLat, currentLng));
-      createCurrentLocationMarker(currentLat, currentLng);
-    },
-    function () {
-      console.log("현재 위치 재설정 실패");
-    },
-  );
-}
-
 function searchAndDisplay(keyword) {
   console.log("검색 시작: ", keyword);
 
